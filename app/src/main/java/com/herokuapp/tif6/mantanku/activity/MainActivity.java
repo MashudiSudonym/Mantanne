@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
         Call<ApiValue> call = apiClient.viewAll();
         call.enqueue(new Callback<ApiValue>() {
+            // Load data
             @Override
             public void onResponse(Call<ApiValue> call, Response<ApiValue> response) {
                 progressBar.setVisibility(View.GONE);
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 recyclerView.setAdapter(viewAdapter);
             }
 
+            // Jika gagal load data
             @Override
             public void onFailure(Call<ApiValue> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);

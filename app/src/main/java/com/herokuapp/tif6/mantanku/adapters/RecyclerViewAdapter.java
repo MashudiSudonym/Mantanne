@@ -65,12 +65,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View view) {
-//            String id = textViewId.getText().toString();
+            String id = textViewId.getText().toString();
 //            String nama = textViewNama.getText().toString();
 //            String alasan = textViewAlasan.getText().toString();
 //
             Intent i = new Intent(context, DetailActivity.class);
-//            i.putExtra("id", id);
+            i.putExtra("id", id);
 //            i.putExtra("nama", nama);
 //            i.putExtra("alasan", alasan);
             context.startActivity(i);
