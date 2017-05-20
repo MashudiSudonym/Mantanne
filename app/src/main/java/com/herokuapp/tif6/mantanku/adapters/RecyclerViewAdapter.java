@@ -1,6 +1,7 @@
 package com.herokuapp.tif6.mantanku.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.herokuapp.tif6.mantanku.R;
+import com.herokuapp.tif6.mantanku.activity.DetailActivity;
 import com.herokuapp.tif6.mantanku.models.ProjectRepo;
 
 import java.util.List;
@@ -67,11 +69,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //            String nama = textViewNama.getText().toString();
 //            String alasan = textViewAlasan.getText().toString();
 //
-//            Intent i = new Intent(context, ByIdActivity.class);
+            Intent i = new Intent(context, DetailActivity.class);
 //            i.putExtra("id", id);
 //            i.putExtra("nama", nama);
 //            i.putExtra("alasan", alasan);
-//            context.startActivity(i);
+            context.startActivity(i);
         }
     }
 }

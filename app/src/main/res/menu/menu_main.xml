@@ -1,22 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="sudonym.anggertugas.MainActivity">
-    <!--<item-->
-        <!--android:id="@+id/title_activity_login"-->
-        <!--android:orderInCategory="100"-->
-        <!--android:title="@string/title_activity_login"-->
-        <!--app:showAsAction="never" />-->
+    tools:context="com.herokuapp.tif6.mantanku.activity.MainActivity">
+    <item
+        android:id="@+id/title_activity_login"
+        android:orderInCategory="100"
+        android:title="@string/title_activity_login"
+        app:showAsAction="never" />
 
-    <!--<item-->
-        <!--android:id="@+id/tambah"-->
-        <!--android:orderInCategory="100"-->
-        <!--android:title="@string/tambah"-->
-        <!--app:showAsAction="never" />-->
+    <item
+        android:id="@+id/tambah"
+        android:orderInCategory="100"
+        android:title="@string/tambah"
+        app:showAsAction="never" />
 
-    <!--<item-->
-        <!--android:id="@+id/title_activity_logout"-->
-        <!--android:orderInCategory="100"-->
-        <!--android:title="@string/title_activity_logout"-->
-        <!--app:showAsAction="never" />-->
+    <item
+        android:id="@+id/title_activity_logout"
+        android:orderInCategory="100"
+        android:title="@string/title_activity_logout"
+        app:showAsAction="never" />
 </menu>

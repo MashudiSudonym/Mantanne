@@ -1,4 +1,4 @@
-package com.herokuapp.tif6.mantanku.main;
+package com.herokuapp.tif6.mantanku.activity;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -78,6 +78,28 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void loadDataApi() {
+        // Get ServiceGenerator
+        ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
+        Call<ApiValue> call = apiClient.viewAll();
+        call.enqueue(new Callback<ApiValue>() {
+            @Override
+            public void onResponse(Call<ApiValue> call, Response<ApiValue> response) {
+                progressBar.setVisibility(View.GONE);
+                results = response.body().getResult();
+                viewAdapter = new RecyclerViewAdapter(MainActivity.this, results);
+                recyclerView.setAdapter(viewAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ApiValue> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(MainActivity.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -106,27 +128,6 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void loadDataApi() {
-        // Get ServiceGenerator
-        ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
-        Call<ApiValue> call = apiClient.viewAll();
-        call.enqueue(new Callback<ApiValue>() {
-            @Override
-            public void onResponse(Call<ApiValue> call, Response<ApiValue> response) {
-                progressBar.setVisibility(View.GONE);
-                results = response.body().getResult();
-                viewAdapter = new RecyclerViewAdapter(MainActivity.this, results);
-                recyclerView.setAdapter(viewAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<ApiValue> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(MainActivity.this, "Jaringan Error!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
