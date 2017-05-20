@@ -1,4 +1,4 @@
-package com.herokuapp.tif6.mantanku;
+package com.herokuapp.tif6.mantanku.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.herokuapp.tif6.mantanku.R;
 import com.herokuapp.tif6.mantanku.models.ProjectRepo;
 
 import java.util.List;

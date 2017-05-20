@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="5dp"
+    card_view:cardCornerRadius="1dp"
     card_view:cardElevation="5dp"
     card_view:cardUseCompatPadding="true"
-    tools:context="com.herokuapp.tif6.mantanku.MainActivity"
+    tools:context="com.herokuapp.tif6.mantanku.main.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <TableLayout

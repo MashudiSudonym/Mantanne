@@ -1,4 +1,4 @@
-package com.herokuapp.tif6.mantanku;
+package com.herokuapp.tif6.mantanku.main;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.herokuapp.tif6.mantanku.R;
+import com.herokuapp.tif6.mantanku.adapters.RecyclerViewAdapter;
 import com.herokuapp.tif6.mantanku.models.ApiClient;
 import com.herokuapp.tif6.mantanku.models.ApiValue;
 import com.herokuapp.tif6.mantanku.models.ProjectRepo;

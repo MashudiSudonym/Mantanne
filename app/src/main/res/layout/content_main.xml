@@ -10,7 +10,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.herokuapp.tif6.mantanku.MainActivity"
+    tools:context="com.herokuapp.tif6.mantanku.main.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <ProgressBar
