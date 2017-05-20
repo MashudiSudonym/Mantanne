@@ -9,10 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.herokuapp.tif6.mantanku.R;
-import com.herokuapp.tif6.mantanku.adapters.RecyclerViewAdapter;
 import com.herokuapp.tif6.mantanku.models.ApiClient;
 import com.herokuapp.tif6.mantanku.models.ApiValue;
-import com.herokuapp.tif6.mantanku.models.ProjectRepo;
+import com.herokuapp.tif6.mantanku.models.ApiResult;
 import com.herokuapp.tif6.mantanku.services.ServiceGenerator;
 
 import java.util.ArrayList;
@@ -25,8 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity {
-    private List<ProjectRepo> results = new ArrayList<>();
-    private RecyclerViewAdapter viewAdapter;
+    private List<ApiResult> results = new ArrayList<>();
 
     @BindView(R.id.textId) TextView textId;
     @BindView(R.id.textNama) TextView textNama;
@@ -58,8 +56,20 @@ public class DetailActivity extends AppCompatActivity {
         call.enqueue(new Callback<ApiValue>() {
             @Override
             public void onResponse(Call<ApiValue> call, Response<ApiValue> response) {
+                // Ambil message jika belum login
+                String message = response.body().getMessage();
+
                 // menampilkan hasil
-                results = response.body().getResult();
+                 results = response.body().getResult();
+
+                // Jika belum login
+                if(message.equals("Belum Login")){
+                    // Kembali ke main activity
+                    finish();
+
+                    // popup toast pesan error
+                    Toast.makeText(DetailActivity.this, "Belum Login", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

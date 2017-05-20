@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.herokuapp.tif6.mantanku.R;
 import com.herokuapp.tif6.mantanku.activity.DetailActivity;
-import com.herokuapp.tif6.mantanku.models.ProjectRepo;
+import com.herokuapp.tif6.mantanku.models.ApiResult;
 
 import java.util.List;
 
@@ -23,9 +23,9 @@ import butterknife.ButterKnife;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private Context context;
-    private List<ProjectRepo> results;
+    private List<ApiResult> results;
 
-    public RecyclerViewAdapter(Context context, List<ProjectRepo> results) {
+    public RecyclerViewAdapter(Context context, List<ApiResult> results) {
         this.context = context;
         this.results = results;
     }
@@ -40,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ProjectRepo result = results.get(position);
+        ApiResult result = results.get(position);
         holder.textViewId.setText(Integer.toString(result.getId()));
         holder.textViewNama.setText(result.getName());
 //        holder.textViewAlasan.setText(result.getAlasan());

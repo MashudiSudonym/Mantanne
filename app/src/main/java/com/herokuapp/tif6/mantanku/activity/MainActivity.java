@@ -17,7 +17,7 @@ import com.herokuapp.tif6.mantanku.R;
 import com.herokuapp.tif6.mantanku.adapters.RecyclerViewAdapter;
 import com.herokuapp.tif6.mantanku.models.ApiClient;
 import com.herokuapp.tif6.mantanku.models.ApiValue;
-import com.herokuapp.tif6.mantanku.models.ProjectRepo;
+import com.herokuapp.tif6.mantanku.models.ApiResult;
 import com.herokuapp.tif6.mantanku.services.ServiceGenerator;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private List<ProjectRepo> results = new ArrayList<>();
+    private List<ApiResult> results = new ArrayList<>();
     private RecyclerViewAdapter viewAdapter;
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;

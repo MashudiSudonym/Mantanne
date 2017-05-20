@@ -1,5 +1,8 @@
 package com.herokuapp.tif6.mantanku.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,9 +10,17 @@ import java.util.List;
  */
 
 public class ApiValue {
-    public List<ProjectRepo> result;
+    @SerializedName("Message")
+    @Expose
+    String message;
 
-    public List<ProjectRepo> getResult(){
+    public List<ApiResult> result;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public List<ApiResult> getResult(){
         return result;
     }
 }

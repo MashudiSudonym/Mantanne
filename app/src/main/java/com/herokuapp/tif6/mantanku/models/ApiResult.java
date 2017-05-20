@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by sudonym on 19/05/2017.
  */
 
-public class ProjectRepo {
+public class ApiResult {
     @SerializedName("Alasan Putus")
     @Expose
     private String alasan;
@@ -19,6 +19,10 @@ public class ProjectRepo {
     @SerializedName("Nama")
     @Expose
     private String nama;
+
+    @SerializedName("Message")
+    @Expose
+    private String message;
 
     public String getAlasan() {
         return alasan;
@@ -42,5 +46,13 @@ public class ProjectRepo {
 
     public void setName(String nama) {
         this.nama = nama;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
