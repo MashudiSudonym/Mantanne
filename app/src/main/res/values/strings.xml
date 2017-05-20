@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Mantanku</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="id">ID</string>
+    <string name="name">Nama</string>
+    <string name="alasan">Alasan</string>
+    <string name="register">Daftar</string>
+    <string name="view">Lihat Data</string>
+    <string name="tambah">Tambah</string>
+    <string name="update">Ubah</string>
+    <string name="delete">Hapus</string>
+    <string name="title_activity_login">Log In</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_logout">Log Out</string>
+</resources>
