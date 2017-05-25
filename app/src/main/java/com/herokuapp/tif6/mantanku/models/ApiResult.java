@@ -20,10 +20,6 @@ public class ApiResult {
     @Expose
     private String nama;
 
-    @SerializedName("Message")
-    @Expose
-    private String message;
-
     public String getAlasan() {
         return alasan;
     }
@@ -46,13 +42,5 @@ public class ApiResult {
 
     public void setName(String nama) {
         this.nama = nama;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

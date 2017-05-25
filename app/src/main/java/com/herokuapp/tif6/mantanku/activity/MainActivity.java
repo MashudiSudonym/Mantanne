@@ -1,5 +1,6 @@
 package com.herokuapp.tif6.mantanku.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +17,8 @@ import android.widget.Toast;
 import com.herokuapp.tif6.mantanku.R;
 import com.herokuapp.tif6.mantanku.adapters.RecyclerViewAdapter;
 import com.herokuapp.tif6.mantanku.models.ApiClient;
-import com.herokuapp.tif6.mantanku.models.ApiValue;
 import com.herokuapp.tif6.mantanku.models.ApiResult;
+import com.herokuapp.tif6.mantanku.models.ApiValue;
 import com.herokuapp.tif6.mantanku.services.ServiceGenerator;
 
 import java.util.ArrayList;
@@ -30,6 +31,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    // Get ServiceGenerator
+    ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
+
     private List<ApiResult> results = new ArrayList<>();
     private RecyclerViewAdapter viewAdapter;
 
@@ -79,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadDataApi() {
-        // Get ServiceGenerator
-        ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
+        // Get data from API
         Call<ApiValue> call = apiClient.viewAll();
         call.enqueue(new Callback<ApiValue>() {
             // Load data
@@ -101,12 +104,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    // Menu Aplikasi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+
     }
 
     @Override
@@ -117,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.title_activity_login) {
-//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//        }
+        if (id == R.id.title_activity_login) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
 //
 //        if (id == R.id.title_activity_logout) {
 //            startActivity(new Intent(MainActivity.this, LogoutActivity.class));
@@ -130,11 +135,5 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadDataApi();
     }
 }

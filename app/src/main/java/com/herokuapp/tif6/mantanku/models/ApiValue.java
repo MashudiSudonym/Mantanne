@@ -14,10 +14,18 @@ public class ApiValue {
     @Expose
     String message;
 
+    @SerializedName("token")
+    @Expose
+    String token;
+
     public List<ApiResult> result;
 
     public String getMessage() {
         return message;
+    }
+
+    public String getToken() {
+        return token;
     }
 
     public List<ApiResult> getResult(){

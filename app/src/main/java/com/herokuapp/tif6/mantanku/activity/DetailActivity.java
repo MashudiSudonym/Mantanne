@@ -1,6 +1,7 @@
 package com.herokuapp.tif6.mantanku.activity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import com.herokuapp.tif6.mantanku.R;
 import com.herokuapp.tif6.mantanku.models.ApiClient;
 import com.herokuapp.tif6.mantanku.models.ApiValue;
 import com.herokuapp.tif6.mantanku.models.ApiResult;
+import com.herokuapp.tif6.mantanku.services.LocalServerService;
 import com.herokuapp.tif6.mantanku.services.ServiceGenerator;
 
 import java.util.ArrayList;
@@ -24,6 +26,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity {
+    // Local data server
+    LocalServerService localServerService = new LocalServerService(this);
+
+    // Get ServiceGenerator
+    ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
+
+    protected Cursor cursor;
     private List<ApiResult> results = new ArrayList<>();
 
     @BindView(R.id.textId) TextView textId;
@@ -50,17 +59,13 @@ public class DetailActivity extends AppCompatActivity {
         // Get Id from RecyclerViewAdapter
         Integer id = Integer.valueOf(textId.getText().toString());
 
-        // Get ServiceGenerator
-        ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
+        // Get data from API
         Call<ApiValue> call = apiClient.viewId(id);
         call.enqueue(new Callback<ApiValue>() {
             @Override
             public void onResponse(Call<ApiValue> call, Response<ApiValue> response) {
                 // Ambil message jika belum login
                 String message = response.body().getMessage();
-
-                // menampilkan hasil
-                 results = response.body().getResult();
 
                 // Jika belum login
                 if(message.equals("Belum Login")){
@@ -69,6 +74,9 @@ public class DetailActivity extends AppCompatActivity {
 
                     // popup toast pesan error
                     Toast.makeText(DetailActivity.this, "Belum Login", Toast.LENGTH_SHORT).show();
+                } else {
+                    // menampilkan hasil
+                    results = response.body().getResult();
                 }
             }
 

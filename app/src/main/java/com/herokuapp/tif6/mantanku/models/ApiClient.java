@@ -21,6 +21,9 @@ public interface ApiClient {
     @GET("/ApiShowMantan/{id}")
     Call<ApiValue> viewId(@Path("id") Integer id);
 
+    @GET("/ApiGetToken")
+    Call<ApiValue> viewToken();
+
     // ALL POST Parameters
     @POST("/ApiLogout")
     Call<ApiValue> keluar();
