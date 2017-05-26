@@ -91,29 +91,44 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<ApiValue>() {
             @Override
             public void onResponse(Call<ApiValue> call, Response<ApiValue> response) {
-                // ambil token
-                String token = response.body().getToken();
+                // ambil messages
+                String message = response.body().getMessage();
 
-                SQLiteDatabase db = localServerService.getWritableDatabase();
-                String sqldelete = "DELETE FROM token;";
-                db.execSQL(sqldelete);
-                Log.d("Data", "Delete ");
+                if(message.equals("Login berhasil")) {
+                    // ambil token
+                    String token = response.body().getToken();
 
-                String sqlinsert = "INSERT INTO token(token) VALUES ('"+ token + "');";
-                db.execSQL(sqlinsert);
-                Log.d("Data", "onCreate: ");
+                    SQLiteDatabase db = localServerService.getWritableDatabase();
+                    String sqldelete = "DELETE FROM token;";
+                    db.execSQL(sqldelete);
+                    Log.d("Data", "Delete ");
 
-                new android.os.Handler().postDelayed(
-                        new Runnable() {
-                            public void run() {
-                                // On complete call either onSignupSuccess or onSignupFailed
-                                // depending on success
-                                onLoginSuccess();
-                                // onSignupFailed();
-                                progressDialog.dismiss();
-                            }
-                        }, 3000);
+                    String sqlinsert = "INSERT INTO token(token) VALUES ('"+ token + "');";
+                    db.execSQL(sqlinsert);
+                    Log.d("Data", "onCreate: ");
 
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    // On complete call either onSignupSuccess or onSignupFailed
+                                    // depending on success
+                                    onLoginSuccess();
+                                    // onSignupFailed();
+                                    progressDialog.dismiss();
+                                }
+                            }, 3000);
+                } else if(message.equals("Login gagal")) {
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    // On complete call either onSignupSuccess or onSignupFailed
+                                    // depending on success
+                                    onLoginFailed();
+                                    // onSignupFailed();
+                                    progressDialog.dismiss();
+                                }
+                            }, 3000);
+                }
             }
 
             @Override
@@ -144,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        finish();
+        startActivity(new Intent(LoginActivity.this, MainPersonalDataActivity.class));
         Toast.makeText(getBaseContext(), "Login berhasil", Toast.LENGTH_LONG).show();
     }
 
