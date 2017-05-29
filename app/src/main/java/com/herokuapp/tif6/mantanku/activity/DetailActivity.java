@@ -11,9 +11,8 @@ import android.widget.Toast;
 
 import com.herokuapp.tif6.mantanku.R;
 import com.herokuapp.tif6.mantanku.models.ApiClient;
-import com.herokuapp.tif6.mantanku.models.ApiValue;
 import com.herokuapp.tif6.mantanku.models.ApiResult;
-import com.herokuapp.tif6.mantanku.services.LocalServerService;
+import com.herokuapp.tif6.mantanku.models.ApiValue;
 import com.herokuapp.tif6.mantanku.services.ServiceGenerator;
 
 import java.util.ArrayList;
@@ -26,9 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailActivity extends AppCompatActivity {
-    // Local data server
-    LocalServerService localServerService = new LocalServerService(this);
-
     // Get ServiceGenerator
     ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
 
@@ -64,20 +60,8 @@ public class DetailActivity extends AppCompatActivity {
         call.enqueue(new Callback<ApiValue>() {
             @Override
             public void onResponse(Call<ApiValue> call, Response<ApiValue> response) {
-                // Ambil message jika belum login
-                String message = response.body().getMessage();
-
-                // Jika belum login
-                if(message.equals("Belum Login")){
-                    // Kembali ke main activity
-                    finish();
-
-                    // popup toast pesan error
-                    Toast.makeText(DetailActivity.this, "Belum Login", Toast.LENGTH_SHORT).show();
-                } else {
-                    // menampilkan hasil
-                    results = response.body().getResult();
-                }
+                // menampilkan hasil
+                results = response.body().getResult();
             }
 
             @Override

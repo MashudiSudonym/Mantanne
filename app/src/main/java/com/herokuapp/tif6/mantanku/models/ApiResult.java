@@ -8,24 +8,48 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class ApiResult {
-    @SerializedName("Alasan Putus")
+    @SerializedName("alamat")
     @Expose
-    private String alasan;
+    private String alamat;
 
-    @SerializedName("Id")
+    @SerializedName("id")
     @Expose
     private Integer id;
 
-    @SerializedName("Nama")
+    @SerializedName("nama")
     @Expose
     private String nama;
 
-    public String getAlasan() {
-        return alasan;
+    @SerializedName("no_hp")
+    @Expose
+    private String no_hp;
+
+    @SerializedName("photo")
+    @Expose
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setAlasan(String alasan) {
-        this.alasan = alasan;
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getNoHp() {
+        return no_hp;
+    }
+
+    public void setNoHp(String no_hp) {
+        this.no_hp = no_hp;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
     public Integer getId() {

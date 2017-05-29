@@ -15,42 +15,26 @@ import retrofit2.http.Path;
 
 public interface ApiClient {
     // ALL GET Parameters
-    @GET("/ApiShowMantans")
+    @GET("/ShowUsers")
     Call<ApiValue> viewAll();
 
-    @GET("/ApiShowMantan/{id}")
+    @GET("/ShowUser/{id}")
     Call<ApiValue> viewId(@Path("id") Integer id);
 
-    @GET("/ApiGetToken")
-    Call<ApiValue> viewToken();
-
     // ALL POST Parameters
-    @POST("/ApiLogout")
-    Call<ApiValue> keluar();
-
     @FormUrlEncoded
-    @POST("/ApiRegister")
-    Call<ApiValue> daftar(@Field("email") String email,
-                       @Field("password") String password);
-
-    @FormUrlEncoded
-    @POST("/ApiLogin")
-    Call<ApiValue> masuk(@Field("email") String email,
-                      @Field("password") String password);
-
-    @FormUrlEncoded
-    @POST("/ApiAddMantan")
+    @POST("/AddUser")
     Call<ApiValue> tambah(@Field("nama") String nama,
-                       @Field("alasan") String alasan);
+                       @Field("alamat") String alamat);
 
     // ALL PUT Parameters
     @FormUrlEncoded
-    @PUT("/ApiEditMantan/{id}")
+    @PUT("/UpdateUser/{id}")
     Call<ApiValue> edit(@Path("id") Integer id,
                      @Field("nama") String nama,
-                     @Field("alasan") String alasan);
+                     @Field("alamat") String alamat);
 
     // ALL DELETE Parameters
-    @DELETE("/ApiDeleteMantan/{id}")
+    @DELETE("/DeleteUser/{id}")
     Call<ApiValue> edit(@Path("id") Integer id);
 }

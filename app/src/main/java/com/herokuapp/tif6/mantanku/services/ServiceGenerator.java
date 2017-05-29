@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
     // Base URL
-    private static final String BASE_URL = "https://tif6.herokuapp.com/";
+    private static final String BASE_URL = "https://floating-garden-85536.herokuapp.com/";
 
     // Retrofit Builder
     private static Retrofit.Builder builder =
