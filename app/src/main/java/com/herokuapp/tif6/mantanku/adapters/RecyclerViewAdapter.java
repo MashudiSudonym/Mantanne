@@ -43,7 +43,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ApiResult result = results.get(position);
         holder.textViewId.setText(Integer.toString(result.getId()));
         holder.textViewNama.setText(result.getName());
-//        holder.textViewAlasan.setText(result.getAlasan());
+        holder.textViewAlamat.setText(result.getAlamat());
+        holder.textViewNoHp.setText(result.getNoHp());
+        holder.textViewPhoto.setText(result.getPhoto());
     }
 
     @Override
@@ -55,7 +57,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @BindView(R.id.textId) TextView textViewId;
         @BindView(R.id.textNama) TextView textViewNama;
-//        @BindView(R.id.textAlasan) TextView textViewAlasan;
+        @BindView(R.id.textAlamat) TextView textViewAlamat;
+        @BindView(R.id.textNoHp) TextView textViewNoHp;
+        @BindView(R.id.textPhoto) TextView textViewPhoto;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -66,9 +70,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public void onClick(View view) {
             String id = textViewId.getText().toString();
+            String nama = textViewNama.getText().toString();
+            String alamat = textViewAlamat.getText().toString();
+            String nohp = textViewNoHp.getText().toString();
+            String photo = textViewPhoto.getText().toString();
 
             Intent i = new Intent(context, DetailActivity.class);
             i.putExtra("id", id);
+            i.putExtra("nama", nama);
+            i.putExtra("alamat", alamat);
+            i.putExtra("nohp", nohp);
+            i.putExtra("photo", photo);
+
             context.startActivity(i);
         }
     }

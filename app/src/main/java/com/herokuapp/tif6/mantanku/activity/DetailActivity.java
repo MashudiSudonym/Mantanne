@@ -1,11 +1,16 @@
 package com.herokuapp.tif6.mantanku.activity;
 
+import android.Manifest;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +33,14 @@ public class DetailActivity extends AppCompatActivity {
     // Get ServiceGenerator
     ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
 
-    protected Cursor cursor;
+    private Button button;
     private List<ApiResult> results = new ArrayList<>();
 
     @BindView(R.id.textId) TextView textId;
     @BindView(R.id.textNama) TextView textNama;
-    @BindView(R.id.textAlasan) TextView textAlasan;
+    @BindView(R.id.textAlamat) TextView textAlamat;
+    @BindView(R.id.textNoHp) TextView textNoHp;
+    @BindView(R.id.textPhoto) TextView textPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +52,50 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
+        String nama = intent.getStringExtra("nama");
+        String alamat = intent.getStringExtra("alamat");
+        final String nohp = intent.getStringExtra("nohp");
+        String photo = intent.getStringExtra("photo");
 
         textId.setText(id);
+        textNama.setText(nama);
+        textAlamat.setText(alamat);
+        textNoHp.setText(nohp);
+        textPhoto.setText(photo);
 
         loadDataApiId();
+
+        // call button
+        button = (Button) findViewById(R.id.buttonCall);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:"+nohp));
+
+                if (ActivityCompat.checkSelfPermission(DetailActivity.this,
+                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+            }
+        });
+
+        // sms button
+        button = (Button) findViewById(R.id.buttonSms);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                Intent callIntent = new Intent(Intent.ACTION_VIEW);
+                callIntent.setData(Uri.parse("sms:"+nohp));
+
+                if (ActivityCompat.checkSelfPermission(DetailActivity.this,
+                        Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+            }
+        });
     }
 
     private void loadDataApiId(){

@@ -17,19 +17,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:text="@string/id" />
+                android:text="@string/id"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:text=" : " />
+                android:text=" : "
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/textId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:visibility="gone" />
         </TableRow>
 
         <TableRow>
@@ -57,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:text="@string/alasan" />
+                android:text="@string/alamat" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,10 +69,76 @@
                 android:text=" : " />
 
             <TextView
-                android:id="@+id/textAlasan"
+                android:id="@+id/textAlamat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="@string/nohp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/textNoHp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="@string/photo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text=" : " />
+
+            <TextView
+                android:id="@+id/textPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"/>
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/buttonCall"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:textAlignment="center"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@android:color/background_light"
+                android:text="Call" />
+        </TableRow>
+
+        <TableRow>
+            <Button
+                android:id="@+id/buttonSms"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:textAlignment="center"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@android:color/background_light"
+                android:text="SMS" />
         </TableRow>
     </TableLayout>
 

@@ -4,6 +4,9 @@
     <string name="id">ID</string>
     <string name="name">Nama</string>
     <string name="alasan">Alasan</string>
+    <string name="alamat">Alamat</string>
+    <string name="nohp">Hp</string>
+    <string name="photo">Photo</string>
     <string name="register">Daftar</string>
     <string name="view">Lihat Data</string>
     <string name="tambah">Tambah</string>
