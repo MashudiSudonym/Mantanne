@@ -1,5 +1,6 @@
 package com.herokuapp.tif6.mantanku.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -121,17 +122,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.title_activity_login) {
-//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//        }
-//
-//        if (id == R.id.title_activity_logout) {
-//            startActivity(new Intent(MainActivity.this, LogoutActivity.class));
-//        }
-//
-//        if (id == R.id.tambah) {
-//            startActivity(new Intent(MainActivity.this, TambahActivity.class));
-//        }
+        if (id == R.id.title_activity_tambah) {
+            startActivity(new Intent(MainActivity.this, TambahActivity.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
